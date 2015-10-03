@@ -126,16 +126,16 @@ WpUnderscoresGenerator.prototype.askFor = function askFor() {
 };
 
 WpUnderscoresGenerator.prototype.installunderscores = function installunderscores() {
+    var _ = this._;
     this.startertheme = 'https://github.com/matgargano/starter/archive/master.tar.gz';
     this.log.info('Downloading & extracting ' + chalk.yellow('_s'));
-    this.tarball(this.startertheme, '.', this.async());
+    this.tarball(this.startertheme, 'web/app/themes/' + _.slugify(this.themename).toLowerCase(), this.async());
 };
 WpUnderscoresGenerator.prototype.addfiles = function addfiles() {
     var _ = this._;
     this.log(chalk.yellow('Creating dev folders and files'));
-    this.mkdir('app');
-    this.mkdir('app/' + _.slugify(this.themename).toLowerCase());
-    this.mkdir('config');
+
+    this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase());
     this.mkdir('config/deploy');
     this.copy('Capfile', 'Capfile');
     this.copy('deploy.rb', 'config/config.rb');
@@ -143,13 +143,13 @@ WpUnderscoresGenerator.prototype.addfiles = function addfiles() {
     this.copy('production.rb', 'config/deploy/production.rb');
     this.copy('root-install.sh', 'root-install.sh');
     this.copy('user-install.sh', 'user-install.sh');
-    this.mkdir('app/' + _.slugify(this.themename).toLowerCase() + '/images');
-    this.mkdir('app/' + _.slugify(this.themename).toLowerCase() + '/fonts');
-    this.mkdir('app/' + _.slugify(this.themename).toLowerCase() + '/css');
-    this.mkdir('app/' + _.slugify(this.themename).toLowerCase() + '/sass');
-    this.copy('_main.scss', 'app/' + _.slugify(this.themename).toLowerCase() + '/sass/main.scss');
-    this.mkdir('app/' + _.slugify(this.themename).toLowerCase() + '/js');
-    this.copy('_theme.js', 'app/' + _.slugify(this.themename) + 'js/theme.js');
+    this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/images');
+    this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/fonts');
+    this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/css');
+    this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/sass');
+    this.copy('_main.scss', 'web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/sass/main.scss');
+    this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/js');
+    this.copy('_theme.js', 'web/app/themes/' + _.slugify(this.themename) + '/js/theme.js');
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');
     this.copy('Gruntfile.js', 'Gruntfile.js');
@@ -159,8 +159,8 @@ WpUnderscoresGenerator.prototype.addfiles = function addfiles() {
     this.copy('ruleset.xml', 'ruleset.xml');
     this.copy('composer.json', 'composer.json');
     this.copy('Vagrantfile', 'Vagrantfile');
-    this.copy('_wp-config.php', 'wp-config.php');
-    this.copy('_index.php', 'index.php');
+    this.copy('_wp-config.php', 'web/wp-config.php');
+    this.copy('_index.php', 'web/index.php');
 
 
 };
