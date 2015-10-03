@@ -104,7 +104,7 @@ WpUnderscoresGenerator.prototype.askFor = function askFor() {
         {
             name: 'ipaddress',
             message: 'Enter IP Address',
-            default: '192.168.0.' + Math.floor(Math.random() * 255) + 1
+            default: '192.168.4.' + (Math.floor(Math.random() * 800) + parseInt(101, 10))
 
         }
 
@@ -158,6 +158,7 @@ WpUnderscoresGenerator.prototype.addfiles = function addfiles() {
     this.copy('_env', '.env');
     this.copy('ruleset.xml', 'ruleset.xml');
     this.copy('composer.json', 'composer.json');
+    this.copy('Vagrantfile', 'Vagrantfile');
 
 
 };
