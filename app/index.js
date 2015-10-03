@@ -1,4 +1,11 @@
 'use strict';
+
+String.prototype.replaceAll = function (find, replace) {
+    var str = this;
+    return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
+};
+
+
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
@@ -23,6 +30,8 @@ var findReplaceFiles = [
     'staging.rb',
     'user-install.sh'
 ];
+
+
 
 var hello =
     chalk.blue.bold("\n ______________") +
@@ -220,10 +229,10 @@ function findandreplace(dir) {
 
             self.log.info('Updating ' + chalk.yellow(file));
             data = fs.readFileSync(file, 'utf8');
-            result = data.replace('{{SITE_NAME}}', self.themename);
-            result = result.replace('{{IP_ADDRESS}}', self.ipaddress);
-            result = result.replace('{{PORT}}', self.port);
-            result = result.replace('{{SITE_NAME_SLUG}}', _.slugify(self.themename).toLowerCase());
+            result = data.replaceAll('{{SITE_NAME}}', self.themename);
+            result = result.replaceAll('{{IP_ADDRESS}}', self.ipaddress);
+            result = result.replaceAll('{{PORT}}', self.port);
+            result = result.replaceAll('{{SITE_NAME_SLUG}}', _.slugify(self.themename).toLowerCase());
 
             fs.writeFileSync(file, result, 'utf8');
         }
