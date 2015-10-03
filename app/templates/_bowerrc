@@ -1,0 +1,3 @@
+{
+  "directory" : "web/app/themes/js/{{SITE_NAME_SLUG}}/vendor"
+}

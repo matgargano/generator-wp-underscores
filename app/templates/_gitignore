@@ -21,65 +21,54 @@ find.php
 node_modules
 
 # Default themes
-wp-content/themes/twentyeleven
-wp-content/themes/twentytwelve
-wp-content/themes/twentythireen
+app/themes/{{SITE_NAME_SLUG}}
+app/themes/{{SITE_NAME_SLUG}}/js/external
 
-# wordpress specific
-license.txt
-readme.html
-wp-config.php
-wp-content/uploads/
-wp-content/blogs.dir/
-wp-content/upgrade/*
-wp-content/backup-db/*
-wp-content/advanced-cache.php
-wp-content/wp-cache-config.php
-wp-content/cache/*
-wp-content/cache/supercache/*
 
-# wpengine specific
-.smushit-status
-.gitattributes
-_wpeprivate
-wp-content/object-cache.php
-wp-content/mu-plugins/mu-plugin.php
-wp-content/mu-plugins/slt-force-strong-passwords.php
-wp-content/mu-plugins/limit-login-attempts
-wp-content/mu-plugins/wpengine-common
-wp-content/mysql.sql
+web/app/plugins
+web/app/mu-plugins
+npm-debug.log
+node_modules
 
-# large/disallowed file types
-# a CDN should be used for these
-*.hqx
-*.bin
-*.exe
-*.dll
-*.deb
-*.dmg
-*.iso
-*.img
-*.msi
-*.msp
-*.msm
-*.mid
-*.midi
-*.kar
-*.mp3
-*.ogg
-*.m4a
-*.ra
-*.3gpp
-*.3gp
-*.mp4
-*.mpeg
-*.mpg
-*.mov
-*.webm
-*.flv
-*.m4v
-*.mng
-*.asx
-*.asf
-*.wmv
-*.avi
+nbproject/
+.idea
+.vagrant
+vendor/
+.htaccess
+php_errors.log
+.DS_Store
+wp
+uploads/
+web/uploads/
+.env
+phpdotenv
+web/app/uploads/
+web/app/wfcache/
+.sass-cache
+*.sql
+
+#Theme Ignored Files
+web/app/themes/{{SITE_NAME_SLUG}}/external
+web/app/themes/{{SITE_NAME_SLUG}}/css/*
+web/app/themes/{{SITE_NAME_SLUG}}/style.css
+web/app/themes/{{SITE_NAME_SLUG}}/style.css.map
+web/app/themes/{{SITE_NAME_SLUG}}/main.js
+web/app/themes/{{SITE_NAME_SLUG}}/js/libraries.min.js
+web/app/themes/{{SITE_NAME_SLUG}}/js/main.min.js
+web/app/themes/{{SITE_NAME_SLUG}}/app/plugins
+web/app/themes/{{SITE_NAME_SLUG}}/npm-debug.log
+web/app/themes/{{SITE_NAME_SLUG}}/node_modules
+web/app/themes/{{SITE_NAME_SLUG}}/external
+web/app/themes/{{SITE_NAME_SLUG}}/nbproject/
+web/app/themes/{{SITE_NAME_SLUG}}/.idea
+web/app/themes/{{SITE_NAME_SLUG}}/.vagrant
+web/app/themes/{{SITE_NAME_SLUG}}/css/main.css.map
+web/app/themes/{{SITE_NAME_SLUG}}/vendor/
+web/app/themes/{{SITE_NAME_SLUG}}/.htaccess
+web/app/themes/{{SITE_NAME_SLUG}}/media
+web/app/themes/{{SITE_NAME_SLUG}}/php_errors.log
+web/app/themes/{{SITE_NAME_SLUG}}/.DS_Store
+web/app/themes/{{SITE_NAME_SLUG}}/wp
+web/app/themes/{{SITE_NAME_SLUG}}/main.js
+web/app/themes/{{SITE_NAME_SLUG}}/js/libraries.min.js
+web/app/themes/{{SITE_NAME_SLUG}}/js/main.min.js

@@ -1,5 +1,5 @@
 /**
- * <%= themename %>
+ * {{SITE_NAME}}
  * <%= themeuri %>
  *
  * Theme javascript

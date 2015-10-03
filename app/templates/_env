@@ -1,0 +1,8 @@
+DB_NAME=ev
+DB_USER=root
+DB_PASSWORD=root
+DB_HOST=localhost
+
+WP_ENV=development
+WP_HOME=http://{{SITE_NAME_SLUG}}.dev
+WP_SITEURL=http://{{SITE_NAME_SLUG}}.dev/wp
