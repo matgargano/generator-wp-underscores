@@ -104,7 +104,7 @@ WpUnderscoresGenerator.prototype.askFor = function askFor() {
         {
             name: 'ipaddress',
             message: 'Enter IP Address',
-            default: '192.168.4.' + (Math.floor(Math.random() * 800) + parseInt(101, 10))
+            default: '192.168.4.' + (Math.floor(Math.random() * 150) + parseInt(101, 10))
 
         }
 
@@ -159,6 +159,8 @@ WpUnderscoresGenerator.prototype.addfiles = function addfiles() {
     this.copy('ruleset.xml', 'ruleset.xml');
     this.copy('composer.json', 'composer.json');
     this.copy('Vagrantfile', 'Vagrantfile');
+    this.copy('_wp-config.php', 'wp-config.php');
+    this.copy('_index.php', 'index.php');
 
 
 };
