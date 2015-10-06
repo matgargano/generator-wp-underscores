@@ -15,7 +15,7 @@ var findReplaceFiles = [
     'Capfile',
     'Gruntfile.js',
     'Vagrantfile',
-
+    'bower.json',
     '.bowerrc',
     '.env',
     '.gitignore',
@@ -179,6 +179,7 @@ WpUnderscoresGenerator.prototype.addfiles = function addfiles() {
     this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/js');
     this.copy('_theme.js', 'web/app/themes/' + _.slugify(this.themename) + '/js/theme.js');
     this.copy('_package.json', 'package.json');
+    this.copy('_bower.json', 'bower.json');
     this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('_gitignore', '.gitignore');
     this.copy('_bowerrc', '.bowerrc');
@@ -268,9 +269,8 @@ WpUnderscoresGenerator.prototype.renameunderscores = function renameunderscores(
 
 WpUnderscoresGenerator.prototype.bowerdependencies = function bowerdependencies() {
 
-    var deps = this.dependencies.toString().replace(',', ' ');
+    var deps = this.dependencies;
+
     this.bowerInstall(deps, {save: true});
-
-
     this.log.ok("\n ______________ Adding Bower Dependencies _________");
 };
