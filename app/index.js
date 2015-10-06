@@ -15,7 +15,7 @@ var findReplaceFiles = [
     'Capfile',
     'Gruntfile.js',
     'Vagrantfile',
-    'bower.json',
+
     '.bowerrc',
     '.env',
     '.gitignore',
@@ -30,7 +30,6 @@ var findReplaceFiles = [
     'staging.rb',
     'user-install.sh'
 ];
-
 
 
 var hello =
@@ -99,10 +98,29 @@ WpUnderscoresGenerator.prototype.askFor = function askFor() {
             default: 'A Story Worldwide Starter Theme'
         },
         {
-            type: 'confirm',
-            name: 'sassBootstrap',
-            message: 'Would you like to include sass-bootstrap?',
-            default: false
+            type: "checkbox",
+            name: "dependencies",
+            message: "What bower dependencies do you want to install?",
+            choices: [
+                "bootstrap-sass",
+                "bootstrap-less",
+                "foundation",
+                "flexslider",
+                "slick-carousel",
+                "animate.css",
+                "modernizr",
+                "fontawesome",
+                "waypoints",
+                "wow",
+                "parallax.js"
+
+            ],
+            filter: function (val) {
+                if (val === 'bootstrap-less') {
+                    val = 'bootstrap';
+                }
+                return val;
+            }
         },
         {
             name: 'port',
@@ -129,6 +147,7 @@ WpUnderscoresGenerator.prototype.askFor = function askFor() {
         this.sassBootstrap = props.sassBootstrap;
         this.ipaddress = props.ipaddress;
         this.port = props.port;
+        this.dependencies = props.dependencies;
 
         cb();
     }.bind(this));
@@ -160,7 +179,6 @@ WpUnderscoresGenerator.prototype.addfiles = function addfiles() {
     this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/js');
     this.copy('_theme.js', 'web/app/themes/' + _.slugify(this.themename) + '/js/theme.js');
     this.copy('_package.json', 'package.json');
-    this.copy('_bower.json', 'bower.json');
     this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('_gitignore', '.gitignore');
     this.copy('_bowerrc', '.bowerrc');
@@ -248,8 +266,11 @@ WpUnderscoresGenerator.prototype.renameunderscores = function renameunderscores(
 };
 
 
-WpUnderscoresGenerator.prototype.sassboostrap = function sassboostrap() {
-    if (this.sassBootstrap) {
-        this.bowerInstall(['sass-bootstrap'], {save: true});
-    }
+WpUnderscoresGenerator.prototype.bowerdependencies = function bowerdependencies() {
+
+    var deps = this.dependencies.toString().replace(',', ' ');
+    this.bowerInstall(deps, {save: true});
+
+
+    this.log.ok("\n ______________ Adding Bower Dependencies _________");
 };
