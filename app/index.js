@@ -112,13 +112,25 @@ WpUnderscoresGenerator.prototype.askFor = function askFor() {
                 "fontawesome",
                 "waypoints",
                 "wow",
-                "parallax.js"
+                "parallax.js",
+                "greensock (gsap)"
 
             ],
             filter: function (val) {
-                if (val === 'bootstrap-less') {
-                    val = 'bootstrap';
+
+                var mapper = {
+                    'bootstrap-less': {
+                        name: 'bootstrap'
+                    },
+                    'greensock (gsap)': {
+                        name: 'gsap'
+                    }
+                };
+
+                if (mapper[val] !== undefined) {
+                    val = mapper[val].name;
                 }
+
                 return val;
             }
         },
@@ -176,8 +188,8 @@ WpUnderscoresGenerator.prototype.addfiles = function addfiles() {
     this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/css');
     this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/sass');
     this.copy('_main.scss', 'web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/sass/main.scss');
-    this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/js');
-    this.copy('_theme.js', 'web/app/themes/' + _.slugify(this.themename) + '/js/theme.js');
+    this.mkdir('web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/js1');
+    this.copy('_theme.js', 'web/app/themes/' + _.slugify(this.themename).toLowerCase() + '/js2/theme.js');
     this.copy('_package.json', 'package.json');
     this.copy('_bower.json', 'bower.json');
     this.copy('Gruntfile.js', 'Gruntfile.js');
