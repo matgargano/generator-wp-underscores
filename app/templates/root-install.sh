@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SITE='profretail'
+SITE='{{SITE_NAME_SLUG}}'
 LOG_FILE='/home/vagrant/root-install.log'
 
 trap ctrl_c INT
